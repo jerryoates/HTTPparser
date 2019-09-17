@@ -13,10 +13,13 @@ module.exports = function parseHttp(request){
   }
 
   parsedMessage.headers = {}
-  parts = lines[1].split(': ')
-  console.log(parts)
-  const key = parts[0]
-  const value = parts[1]
-  parsedMessage.headers[key] = value
+
+  for(let i=1; i<lines.length; i++){
+    parts = lines[i].split(': ')
+    console.log(parts)
+    const key = parts[0]
+    const value = parts[1]
+    parsedMessage.headers[key] = value
+  }
   return parsedMessage
 }
